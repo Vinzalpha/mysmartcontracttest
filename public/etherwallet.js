@@ -84,7 +84,8 @@ const contractABI = [
     "type": "function"
   }
 ];
-const contractAddress = "0xd138BdbaF383daaB558473aA05361460e8f15E1E";
+// const contractAddress = "0x0087DfE7Bf2cb07ecEe8e59521F81D153216AA69"; // Ganache
+const contractAddress = "0x035E8C3A30dE92766A8685278F2bdF8372fA3D46"; // Mainnet
 const initContract = () => {
   return new web3.eth.Contract(contractABI, contractAddress);
 }

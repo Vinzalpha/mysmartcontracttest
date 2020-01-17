@@ -18,10 +18,15 @@
  *
  */
 
-// const HDWalletProvider = require('truffle-hdwallet-provider');
+const HDWalletProvider = require('truffle-hdwallet-provider');
 // const infuraKey = "fj4jll3k.....";
 //
-// const fs = require('fs');
+const fs = require('fs');
+
+const secrets = JSON.parse(
+  fs.readFileSync(".secrets").toString().trim()
+)
+
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
@@ -48,6 +53,13 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
      },
 
+     live: {
+      provider: () => new HDWalletProvider(
+        secrets.seed,
+        `https://mainnet.infura.io/v3/${secrets.projectId}`
+        ),
+      network_id: 1
+     }
     // Another network with more advanced options...
     // advanced: {
       // port: 8777,             // Custom port
